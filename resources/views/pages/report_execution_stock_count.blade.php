@@ -67,21 +67,22 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i = $audit_mis_data->perPage() * ($audit_mis_data->currentPage() -1); ?>
-                                        @foreach($audit_mis_data as $key=> $mis)
+                                        <?php $i = $stock_count_data->perPage() * ($stock_count_data->currentPage() -1); ?>
+                                        @foreach($stock_count_data as $key=> $stock)
                                             <tr>
                                                 <td>{{ $i+1 }}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{isset($stock->project) ? $stock->project : ''}}</td>
+                                                <td>{{isset($stock->branch_id) ? $stock->branch_id : ''}}</td>
+                                                <td>{{isset($stock->item) ? $stock->item : ''}}</td>
+                                                <td>{{isset($stock->issued_qty) ? $stock->issued_qty : ''}}</td>
+                                                <td>{{isset($stock->issued_from) ? $stock->issued_from : ''}}</td>
+                                                <td>{{isset($stock->issued_to) ? $stock->issued_to : ''}}</td>
+                                                <td>{{isset($stock->received_qty) ? $stock->received_qty : ''}}</td>
+                                                <td>{{isset($stock->serial_from) ? $stock->serial_from : ''}}</td>
+                                                <td>{{isset($stock->serial_to) ? $stock->serial_to : ''}}</td>
+                                                <td>{{isset($stock->status) ? $stock->status : ''}}</td>
+                                                <td>{{isset($stock->returned_serial_from) ? $stock->returned_serial_from : ''}}</td>
+                                                <td>{{isset($stock->returned_serial_to) ? $stock->returned_serial_to : ''}}</td>
                                                 <td></td>
                                             </tr>
                                             <?php $i++;?>
@@ -89,7 +90,7 @@
                                         </tbody>
 
                                     </table>
-                                    {{ $audit_mis_data->links() }}
+                                    {{ $stock_count_data->links() }}
                                 </div>
                             </div>
                         </div>

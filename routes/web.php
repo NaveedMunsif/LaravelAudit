@@ -65,7 +65,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/execution-unpresented-cheque',[AuditReportController::class, 'ExecutionUnpresentedCheque'])->name('report_execution_unpresented_cheque');
     Route::get('/execution-fund-requests',[AuditReportController::class, 'ExecutionFundRequests'])->name('report_execution_fund_requests');
-    Route::get('/execution-reconcillation',[AuditReportController::class, 'ExecutionReconcillation'])->name('report_execution_reconcillation');
+    Route::get('/execution-reconcillation',[AuditReportController::class, 'ExecutionReconciliation'])->name('report_execution_reconcillation');
     Route::get('/execution-human-resource',[AuditReportController::class, 'ExecutionHumanResource'])->name('report_execution_human_resource');
     Route::get('/execution-stock-count',[AuditReportController::class, 'ExecutionStockCount'])->name('report_execution_stock_count');
     Route::get('/execution-cash-count',[AuditReportController::class, 'ExecutionCashCount'])->name('report_cash_count');

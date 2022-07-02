@@ -59,18 +59,22 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i = $audit_mis_data->perPage() * ($audit_mis_data->currentPage() -1); ?>
-                                        @foreach($audit_mis_data as $key=> $mis)
+                                        <?php $i = $reconciliation_data->perPage() * ($reconciliation_data->currentPage() -1); ?>
+                                        @foreach($reconciliation_data as $key=> $recon)
                                             <tr>
                                                 <td>{{ $i+1 }}</td>
-                                                <td></td> <td></td> <td></td> <td></td> <td></td>
+                                                <td>{{isset($recon->project) ? $recon->project : ''}}</td>
+                                                <td>{{isset($recon->disbursed_amount) ? $recon->disbursed_amount : ''}}</td>
+                                                <td>{{isset($recon->fund_transferred) ? $recon->fund_transferred : ''}}</td>
+                                                <td>{{isset($recon->status) ? $recon->status : ''}}</td>
+                                                <td></td>
                                             </tr>
                                             <?php $i++;?>
                                         @endforeach
                                         </tbody>
 
                                     </table>
-                                    {{ $audit_mis_data->links() }}
+                                    {{ $reconciliation_data->links() }}
 
                                 </div>
                             </div>

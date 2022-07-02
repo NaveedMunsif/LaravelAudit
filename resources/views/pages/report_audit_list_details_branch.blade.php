@@ -22,7 +22,10 @@
                 <div class="card-header bg-white pb-1">
                     <div class="btn-group mb-2" role="group" aria-label="Basic example">
                         @foreach($branch_details as $br)
-                            <a href="/report-audit-details-branch-view/{{$br->audit_id}}/{{$br->branch_id}}" class="btn btn-outline-success d-block mb-2" >{{$br->getBranch->name}}</a>
+
+                            <a href="/report-audit-details-branch-view/{{$br->audit_id}}/{{$br->branch_id}}"
+
+                               class="btn btn-outline-success d-block mb-2"  >{{$br->getBranch->name}}</a>
                         @endforeach
                     </div>
                 </div>

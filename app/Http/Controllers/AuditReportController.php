@@ -12,8 +12,11 @@ use App\Models\AuditReport;
 use App\Models\CashCount;
 use App\Models\CuttOff;
 use App\Models\FixedAsset;
+use App\Models\HumanResource;
 use App\Models\MisCsv;
+use App\Models\Reconcillation;
 use App\Models\Region;
+use App\Models\StockCount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -75,36 +78,35 @@ class AuditReportController extends Controller
             compact('audit_details','audit_execution_details','audit_mis_data')
         );
     }
-    public function ExecutionReconcillation(Request $request){
+    public function ExecutionReconciliation(Request $request){
 
         $audit_details = Audit::where('id', $request->audit_id)->first();
         $audit_execution_details = AuditExecution::where('audit_id', $request->audit_id)->first();
-        $audit_mis_data = MisCsv::Select('id','amount','cheque_no')->paginate(200);
+        $reconciliation_data = Reconcillation::where('exe_id',$request->execution_id)->paginate(200);
         return view('pages.report_execution_reconcillation',
-            compact('audit_details','audit_execution_details','audit_mis_data')
+            compact('audit_details','audit_execution_details','reconciliation_data')
         );
     }
     public function ExecutionHumanResource(Request $request){
-
-
-
         $audit_details = Audit::where('id', $request->audit_id)->first();
 
-        $cutt_off_data = CuttOff::where('exe_id',$request->execution_id)->paginate(200);
+        $human_resource_data = HumanResource::where('exe_id',$request->execution_id)->paginate(200);
 
         $audit_execution_details = AuditExecution::where('audit_id', $request->audit_id)->first();
 
         return view('pages.report_execution_human_resource',
-            compact('audit_details','audit_execution_details','cutt_off_data')
+            compact('audit_details','audit_execution_details','human_resource_data')
         );
     }
     public function ExecutionStockCount(Request $request){
 
         $audit_details = Audit::where('id', $request->audit_id)->first();
         $audit_execution_details = AuditExecution::where('audit_id', $request->audit_id)->first();
-        $audit_mis_data = MisCsv::Select('id','amount','cheque_no')->paginate(200);
+
+        $stock_count_data =  StockCount::where('exe_id',$request->execution_id)->paginate(200);
+
         return view('pages.report_execution_stock_count',
-            compact('audit_details','audit_execution_details','audit_mis_data')
+            compact('audit_details','audit_execution_details','stock_count_data')
         );
     }
     public function ExecutionCashCount(Request $request){

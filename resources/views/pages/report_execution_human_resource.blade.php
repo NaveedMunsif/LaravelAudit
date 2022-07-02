@@ -60,15 +60,15 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i = $cutt_off_data->perPage() * ($cutt_off_data->currentPage() -1); ?>
-                                        @foreach($cutt_off_data as $key=> $cutt)
+                                        <?php $i = $human_resource_data->perPage() * ($human_resource_data->currentPage() -1); ?>
+                                        @foreach($human_resource_data as $key=> $cutt)
                                             <tr>
                                                 <td>{{ $i+1 }}</td>
+                                                <td>{{isset($cutt->emp_code) ? $cutt->emp_code : ''}}</td>
+                                                <td>{{isset($cutt->name) ? $cutt->name : ''}}</td>
+                                                <td>{{isset($cutt->designation) ? $cutt->designation : '' }}</td>
                                                 <td></td>
-                                                <td>{{$cutt->name}}</td>
-                                                <td></td> <td></td>
-
-                                                <td>{{$cutt->status}}</td>
+                                                <td>{{isset($cutt->status) ? $cutt->status : ''}}</td>
 
                                                 <td></td>
                                             </tr>
@@ -77,7 +77,7 @@
                                         </tbody>
 
                                     </table>
-                                    {{ $cutt_off_data->links() }}
+                                    {{ $human_resource_data->links() }}
 
                                 </div>
                             </div>
