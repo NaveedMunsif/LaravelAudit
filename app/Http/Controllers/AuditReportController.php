@@ -212,10 +212,11 @@ class AuditReportController extends Controller
     public function auditReportDetails($id){
 
         $branch_id = AuditDetail::Select('branch_id')->where('audit_id', $id)->first();
-        $audit_details_id = AuditDetail::Select('id')->where('audit_id',$id)->where('branch_id',$branch_id->branch_id)->first();
+        $audit_details_id = AuditDetail::Select('id','branch_id')->where('audit_id',$id)->where('branch_id',$branch_id->branch_id)->first();
         $audit_branch_execution_d = AuditExecution::where('audit_details_id',$audit_details_id->id )->where('audit_id',$id)->get();
         $branch_details = AuditDetail::Select('id','audit_id','branch_id')->where('audit_id', $id)->get();
         $audit_info = Audit::select('team_lead','completed_date')->where('id',$id)->first();
+     
 
 //        foreach ($area_observation as $a)
 //        {
@@ -228,7 +229,7 @@ class AuditReportController extends Controller
 //            ->get();
 //        return view('pages.report_audit_list_details',compact('branch_details'));
 
-        return view('pages.report_audit_list_details_branch',compact('branch_details','audit_branch_execution_d','audit_info'));
+        return view('pages.report_audit_list_details_branch',compact('branch_details','audit_branch_execution_d','audit_info','audit_details_id'));
     }
     public function auditReportBranchDetails($id,$branch_id){
 

@@ -20,12 +20,17 @@
         <div class="col-lg-12 mb-4">
             <div class="card">
                 <div class="card-header bg-white pb-1">
+
                     <div class="btn-group mb-2" role="group" aria-label="Basic example">
                         @foreach($branch_details as $br)
 
                             <a href="/report-audit-details-branch-view/{{$br->audit_id}}/{{$br->branch_id}}"
-
-                               class="btn btn-outline-success d-block mb-2"  >{{$br->getBranch->name}}</a>
+                                @if($br->branch_id == $audit_details_id->branch_id )
+                               class="btn btn-success d-block mb-2"
+                            @else
+                               class="btn btn-outline-success d-block mb-2"
+                                    @endif
+                            >{{$br->getBranch->name}}</a>
                         @endforeach
                     </div>
                 </div>
